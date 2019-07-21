@@ -1,0 +1,24 @@
+body{
+    text-align: center;
+}
+
+
+
+#add-date{
+    display: inline-block;
+    padding: 30px;
+}
+
+#main > div{
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    background:rgb(98, 190, 206);;
+}
+#main div >span{
+    font-size: 30px;
+    display: inline-block;
+    padding: 20px;
+    border-radius: 30px;
+    background: rgb(30, 146, 161);
+}
