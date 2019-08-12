@@ -9,27 +9,28 @@ addDate.addEventListener('submit', function (e) {
     
     // Set the name:
     var gett=document.getElementById("bdy_per");
-    gett.innerHTML=name+"'s birthday";
+    gett.innerHTML+=" "+name+"'s birthday!!";
 
-    // Get the date:
+    // Get the datefrom the user:
     var mydte = new Date(addDate.querySelector('input[type="date"]').value);
-
-
-    // Start the interval:
-    startTimer();
     
 
-
-
+    //to convert that date into mm/dd/yy format
     var formatdDte = (mydte.getMonth() + 1) + "/" + mydte.getDate() + "/" + mydte.getFullYear();
 
-    var todayDate = Date.now();//mm-dd-yyyy
 
-    // var bdDate = new Date(formatdDte).getTime();
+    //to find time elapsed upto bdday date
     var bdDate = new Date(formatdDte).getTime();
 
-    if (bdDate - todayDate > 0) {
-
+    
+    var secInterval = setInterval(updateSec, 1000);
+    
+    function updateSec(){
+        
+        //to get time elapsed since today's date and time
+        var todayDate = Date.now();
+       
+        var timeleft=bdDate-todayDate;
 
         var sec = ~~((bdDate - todayDate) / 1000);
 
@@ -47,78 +48,15 @@ addDate.addEventListener('submit', function (e) {
         h.innerHTML = hr;
         var d = document.getElementById("day");
         d.innerHTML = days;
-
-        var secInterval = setInterval(updateSec, 1000);
-
-
-        // function updateSec() {
-        //     --seconds;
-        //     s.innerHTML = seconds;
-
-        //     if (min == 0 && hr == 0 && days == 0) {
-        //         if (seconds == 0) {
-        //             end();
-        //         }
-        //     }
-        //     if (seconds == 1) {
-        //         seconds = 60;
-        //         setTimeout(updateMin, 1000);
-        //     }
-        // }
-        // function updateMin() {
-        //     --min;
-        //     m.innerHTML = min;
-        //     if (hr == 0 && days == 0) {
-        //         if (min == 0)
-        //             m.innerHTML = 00;
-        //     }
-        //     if (min == 1) {
-        //         min = 60;
-        //         setTimeout(updateHr, 1000 * 60);
-        //     }
-        // }
-        // function updateHr() {
-        //     --hr;
-        //     h.innerHTML = hr;
-        //     if (days == 0) {
-        //         if (hr == 0)
-        //             h.innerHTML = 00;
-        //     }
-        //     if (hr == 1) {
-        //         hr = 24;
-        //         setTimeout(updateDay, 1000 * 3600);
-        //     }
-        // }
-        // function updateDay() {
-        //     --days;
-        //     d.innerHTML = days;
-        //     if (days == 0) {
-        //         d.innerHTML = 00;
-        //     }
-        // }
-
-        // function end() {
-        //     clearInterval(secInterval);
-        // }
+        
+        if(timeleft<0)
+        {
+            clearInterval(secInterval);
+        }
     }
-    else {
-        alert("Oops! birthday's gone!\nEnter next birthday");
-    }
-    
+
+
     document.getElementById("btn").disabled=true;
-    
+
 });
-
-function startTimer() {
-    var interval = setInterval(updateTimer, 1000);
-}
-
-function updateTimer() {
-    
-}
-
-function endTimer() {
-    clearInterval(secInterval);
-
-}
 
