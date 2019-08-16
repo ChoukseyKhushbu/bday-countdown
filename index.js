@@ -41,13 +41,13 @@ addDate.addEventListener('submit', function (e) {
 
 
         var s = document.getElementById("secnd");
-        s.innerHTML = seconds;
+        s.innerHTML = ("0"+seconds).slice(-2);
         var m = document.getElementById("minutes");
-        m.innerHTML = min;
+        m.innerHTML = ("0"+min).slice(-2);
         var h = document.getElementById("hours");
-        h.innerHTML = hr;
+        h.innerHTML = ("0"+hr).slice(-2);
         var d = document.getElementById("day");
-        d.innerHTML = days;
+        d.innerHTML = ("0"+days).slice(-2);
         
         if(timeleft<0)
         {
